@@ -11,9 +11,13 @@ namespace Algorytms_lab1
     {
         public static void Main()
         {
-            var list = new List<string> { "aaa", "abcd", "zxcv", "ght", "a", "href", "div"};
-            var sorted = list.MergeSort();
+            var operationCount = 0;
+            var counter = () => operationCount++;
+
+            var list = new List<string> { "aaa", "abcd", "zxcv", "ght", "a", "href", "div", "breakpoint" };
+            var sorted = list.MergeSort(counter);
             sorted.ToList().ForEach(x => Console.WriteLine(x));
+            Console.WriteLine($"Количество операций: {operationCount}");
         }
     }
 }

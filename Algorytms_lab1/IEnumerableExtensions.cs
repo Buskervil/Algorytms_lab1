@@ -8,47 +8,34 @@ namespace Algorytms_lab1
 {
     internal static class IEnumerableExtensions
     {
-        public static IEnumerable<T> MergeSort<T>(this IEnumerable<T> collection) where T : IComparable
+        public static IEnumerable<T> MergeSort<T>(this IEnumerable<T> collection, Func<int> counter = null) where T : IComparable
         {
             var collectionToSort = collection.ToArray();
             if (collectionToSort.Length <= 1)
                 return collectionToSort;
 
-            var leftPart = MergeSort(collectionToSort[..(collectionToSort.Length / 2)]).ToArray();
-            var rightPart = MergeSort(collectionToSort[(collectionToSort.Length / 2)..]).ToArray();
+            var leftPart = MergeSort(collectionToSort[..(collectionToSort.Length / 2)], counter).ToArray();
+            var rightPart = MergeSort(collectionToSort[(collectionToSort.Length / 2)..], counter).ToArray();
 
             var result = new T[collectionToSort.Length];
             var leftPointer = 0;
             var rightPointer = 0;
-            var resultPointer = 0;
 
-            while (leftPointer < leftPart.Count() && rightPointer < rightPart.Count())
+            for (int i = 0; i < result.Length; i++)
             {
-                if (leftPart[leftPointer].CompareTo(rightPart[rightPointer]) <= 0)
+                if (rightPointer >= rightPart.Length
+                    || (leftPointer < leftPart.Length && leftPart[leftPointer].CompareTo(rightPart[rightPointer]) <= 0))
                 {
-                    result[resultPointer] = leftPart[leftPointer];
+                    result[i] = leftPart[leftPointer];
                     leftPointer++;
                 }
                 else
                 {
-                    result[resultPointer] = rightPart[rightPointer];
+                    result[i] = rightPart[rightPointer];
                     rightPointer++;
                 }
-                resultPointer++;
-            }
-
-            while (leftPointer < leftPart.Count())
-            {
-                result[resultPointer] = leftPart[leftPointer];
-                leftPointer++;
-                resultPointer++;
-            }
-
-            while(rightPointer < rightPart.Count())
-            {
-                result[resultPointer] = rightPart[rightPointer];
-                rightPointer++;
-                resultPointer++;
+                if (counter != null)
+                    counter();
             }
 
             return result;
