@@ -15,4 +15,10 @@
     <Resource Include="experiment.xml" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="experiment_plan.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

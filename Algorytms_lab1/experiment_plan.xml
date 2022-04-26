@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <experiments>
-	<experiment name= "HeapTree">
+	<experiment name= "MeargeSort">
 		<nodes name = "Arithmetic Progression" minElement = "0" maxElement = "300"
 		startLength="1000" diff = "100" maxLength = "3000" repeat = "15">
 		</nodes>
@@ -10,6 +10,7 @@
 		<nodes name = "Arithmetic Progression" minElement = "0" maxElement = "10000"
 		startLength="1000" diff = "100" maxLength = "10000" repeat = "15">
 		</nodes>
+		
 		<nodes name = "Geometric Progression" minElement = "0" maxElement = "20"
 		startLength="10" Znamen = "2" maxLength = "10000" repeat = "15">
 		</nodes>
